@@ -1,4 +1,21 @@
-build/
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
 out/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
 target/
 
+# Gradle
+.gradle/
+build/
