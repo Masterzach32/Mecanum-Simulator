@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.masterzach32</groupId>
-    <artifactId>Mechanum-Simulator</artifactId>
+    <artifactId>Mecanum-Simulator</artifactId>
     <version>1.0</version>
 
     <properties>

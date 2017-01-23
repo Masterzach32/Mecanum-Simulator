@@ -19,7 +19,11 @@ class Vector(var text: String, val x: Int, val y: Int, var magnitude: Double, va
         val temp = g.color
         g.rotate(rads)
         g.color = color
-        g.fillRect(x - thickness/2, y, thickness, -(magnitude*40).toInt())
+        val length = (magnitude*40).toInt()
+        if (magnitude < 0)
+            g.fillRect(x - thickness/2, y, thickness, -length)
+        else
+            g.fillRect(x - thickness/2, y - length, thickness, length)
         g.rotate(rads)
         g.color = temp
     }

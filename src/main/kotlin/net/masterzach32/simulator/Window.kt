@@ -4,7 +4,7 @@ import java.awt.*
 import java.util.*
 import javax.swing.*
 
-class Window : JFrame("Mechanum Simulator") {
+class Window : JFrame("Mecanum Simulator") {
 
     val configPanel: ConfigPanel = ConfigPanel()
     val simPanel: SimPanel = SimPanel()
