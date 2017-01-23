@@ -24,7 +24,7 @@ class Vector(var text: String, val x: Int, val y: Int, var magnitude: Double, va
             g.fillRect(x - thickness/2, y, thickness, -length)
         else
             g.fillRect(x - thickness/2, y - length, thickness, length)
-        g.rotate(rads)
+        g.rotate(-rads)
         g.color = temp
     }
 }

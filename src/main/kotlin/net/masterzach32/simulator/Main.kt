@@ -9,8 +9,8 @@ var WINDOW: Window? = null
 
 fun main(args: Array<String>) {
     val config = ConfigFactory.load()
-    LOGGER.info("Starting Mechanum Simulator v${config.getString("version")}")
-    LOGGER.info("This program is for testing and teaching the basics of mechanum drive systems.")
+    LOGGER.info("Starting Mecanum Simulator v${config.getString("version")}")
+    LOGGER.info("This program is for testing and teaching the basics of mecanum drive systems.")
     var authors = ""
     config.getStringList("authors").forEach { authors += "$it, " }
     LOGGER.info("Authors: ${authors.substring(0, authors.length-2)}")
