@@ -11,7 +11,7 @@ class SimPanel : JPanel() {
 
     val arrows = ArrayList<Vector>()
 
-    val startX = 40
+    val startX = 50
     val startY = 50
     val botWidth = 180
     val botHeight = 200

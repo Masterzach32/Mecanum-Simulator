@@ -1,7 +1,6 @@
 package net.masterzach32.simulator
 
 import java.awt.*
-import java.util.*
 import javax.swing.*
 
 class Window : JFrame("Mecanum Simulator") {

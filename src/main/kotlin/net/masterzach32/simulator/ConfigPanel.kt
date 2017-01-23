@@ -57,11 +57,11 @@ class ConfigPanel : JPanel() {
             }
         }
 
-        val cartesian: JRadioButton = JRadioButton("Cartesian Drive Mode")
+        val cartesian: JRadioButton = JRadioButton("Cartesian Drive")
         cartesian.addActionListener { updateDriveMode(DriveMode.CARTESIAN) }
-        val polar: JRadioButton = JRadioButton("Polar Drive Mode")
+        val polar: JRadioButton = JRadioButton("Polar Drive")
         polar.addActionListener { updateDriveMode(DriveMode.POLAR) }
-        val direct: JRadioButton = JRadioButton("Direct Drive Mode")
+        val direct: JRadioButton = JRadioButton("Direct Drive")
         direct.addActionListener { updateDriveMode(DriveMode.DIRECT) }
 
         val absolute = JRadioButton("Absolute Drive")
@@ -131,9 +131,9 @@ class ConfigPanel : JPanel() {
     }
 
     private fun cartesian(wheelSpeeds: DoubleArray) {
-        val speed = MathUtils.rotateVector(sliders[1].value.toDouble(), -sliders[0].value.toDouble(), sliders[4].value.toDouble())
+        val speed = MathUtils.rotateVector(sliders[1].value.toDouble()/100, -sliders[0].value.toDouble()/100, sliders[4].value.toDouble())
         val x = speed[0]
-        val y = speed[1]
+        val y = -speed[1]
         val rot = sliders[3].value.toDouble()
 
         // left front
