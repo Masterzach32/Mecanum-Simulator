@@ -144,7 +144,6 @@ class ConfigPanel : JPanel() {
         wheelSpeeds[2] = -x + y + rot
         // right rear
         wheelSpeeds[3] = x + y - rot
-        LOGGER.debug("${wheelSpeeds.toList()}")
 
         MathUtils.normalize(wheelSpeeds)
     }

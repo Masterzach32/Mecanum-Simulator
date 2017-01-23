@@ -44,15 +44,11 @@ object MathUtils {
      */
     fun rotateVector(x: Double, y: Double, angle: Double): DoubleArray {
         val angleInRadians = Math.toRadians(angle)
-        LOGGER.debug("$angleInRadians")
         val cosA = Math.cos(angleInRadians)
-        LOGGER.debug("$cosA")
         val sinA = Math.sin(angleInRadians)
-        LOGGER.debug("$sinA")
         val out = DoubleArray(2)
         out[0] = x * cosA - y * sinA
         out[1] = x * sinA + y * cosA
-        LOGGER.debug("${out[0]} ${out[1]}")
         return out
     }
 
