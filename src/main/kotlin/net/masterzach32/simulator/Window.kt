@@ -14,7 +14,6 @@ class Window : JFrame("Mecanum Simulator") {
         add(simPanel)
         pack()
         defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
-        //isResizable = false
         val dim = Toolkit.getDefaultToolkit().screenSize
         setLocation(dim.width / 2 - this.size.width / 2, dim.height / 2 - this.size.height / 2)
         isVisible = true

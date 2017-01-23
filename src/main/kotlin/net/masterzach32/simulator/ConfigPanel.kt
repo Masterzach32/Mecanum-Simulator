@@ -114,7 +114,7 @@ class ConfigPanel : JPanel() {
                 cartesian(wheelSpeeds)
             }
             DriveMode.POLAR -> {
-
+                polar(wheelSpeeds)
             }
             DriveMode.DIRECT -> {
                 val leftPitch = sliders[0].value/100.0
@@ -134,7 +134,7 @@ class ConfigPanel : JPanel() {
         val speed = MathUtils.rotateVector(sliders[1].value.toDouble()/100, -sliders[0].value.toDouble()/100, sliders[4].value.toDouble())
         val x = speed[0]
         val y = -speed[1]
-        val rot = sliders[3].value.toDouble()
+        val rot = sliders[3].value.toDouble()/100
 
         // left front
         wheelSpeeds[0] = x + y + rot
@@ -144,8 +144,13 @@ class ConfigPanel : JPanel() {
         wheelSpeeds[2] = -x + y + rot
         // right rear
         wheelSpeeds[3] = x + y - rot
+        LOGGER.debug("${wheelSpeeds.toList()}")
 
         MathUtils.normalize(wheelSpeeds)
+    }
+
+    private fun polar(wheelSpeeds: DoubleArray) {
+
     }
 
     enum class DriveMode {
