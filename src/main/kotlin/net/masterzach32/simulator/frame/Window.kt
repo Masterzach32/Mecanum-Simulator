@@ -1,5 +1,7 @@
-package net.masterzach32.simulator
+package net.masterzach32.simulator.frame
 
+import net.masterzach32.simulator.frame.ConfigPanel
+import net.masterzach32.simulator.frame.SimPanel
 import java.awt.*
 import javax.swing.*
 

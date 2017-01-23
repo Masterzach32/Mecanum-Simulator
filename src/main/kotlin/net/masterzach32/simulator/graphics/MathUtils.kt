@@ -1,4 +1,4 @@
-package net.masterzach32.simulator
+package net.masterzach32.simulator.graphics
 
 
 object MathUtils {

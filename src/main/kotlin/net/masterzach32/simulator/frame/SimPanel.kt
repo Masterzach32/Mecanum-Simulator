@@ -1,5 +1,6 @@
-package net.masterzach32.simulator
+package net.masterzach32.simulator.frame
 
+import net.masterzach32.simulator.graphics.Vector
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics

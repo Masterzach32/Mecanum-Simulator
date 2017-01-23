@@ -1,6 +1,7 @@
 package net.masterzach32.simulator
 
 import com.typesafe.config.ConfigFactory
+import net.masterzach32.simulator.frame.Window
 import org.slf4j.LoggerFactory
 import javax.swing.UIManager
 

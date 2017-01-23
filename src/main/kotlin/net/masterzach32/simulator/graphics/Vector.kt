@@ -1,4 +1,4 @@
-package net.masterzach32.simulator
+package net.masterzach32.simulator.graphics
 
 import java.awt.Color
 import java.awt.Graphics2D

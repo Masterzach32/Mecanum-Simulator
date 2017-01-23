@@ -1,5 +1,7 @@
-package net.masterzach32.simulator
+package net.masterzach32.simulator.frame
 
+import net.masterzach32.simulator.graphics.MathUtils
+import net.masterzach32.simulator.WINDOW
 import java.awt.Dimension
 import java.awt.FlowLayout
 import java.awt.GridLayout
