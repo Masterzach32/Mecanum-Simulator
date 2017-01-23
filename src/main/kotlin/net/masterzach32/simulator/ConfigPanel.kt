@@ -108,10 +108,10 @@ class ConfigPanel : JPanel() {
     }
 
     private fun updateSpeedVectors() {
-        val speeds = DoubleArray(4)
+        val wheelSpeeds = DoubleArray(4)
         when (driveMode) {
             DriveMode.CARTESIAN -> {
-
+                cartesian(wheelSpeeds)
             }
             DriveMode.POLAR -> {
 
@@ -119,15 +119,33 @@ class ConfigPanel : JPanel() {
             DriveMode.DIRECT -> {
                 val leftPitch = sliders[0].value/100.0
                 val rightPitch = sliders[2].value/100.0
-                speeds[0] = leftPitch
-                speeds[1] = rightPitch
-                speeds[2] = leftPitch
-                speeds[3] = rightPitch
+                wheelSpeeds[0] = leftPitch
+                wheelSpeeds[1] = rightPitch
+                wheelSpeeds[2] = leftPitch
+                wheelSpeeds[3] = rightPitch
             }
         }
         val simPanel = WINDOW!!.simPanel
-        speeds.indices.forEach { simPanel.arrows[it].magnitude = speeds[it] }
+        wheelSpeeds.indices.forEach { simPanel.arrows[it].magnitude = wheelSpeeds[it] }
         simPanel.repaint()
+    }
+
+    private fun cartesian(wheelSpeeds: DoubleArray) {
+        val speed = MathUtils.rotateVector(sliders[1].value.toDouble(), -sliders[0].value.toDouble(), sliders[4].value.toDouble())
+        val x = speed[0]
+        val y = speed[1]
+        val rot = sliders[3].value.toDouble()
+
+        // left front
+        wheelSpeeds[0] = x + y + rot
+        // right front
+        wheelSpeeds[1] = -x + y - rot
+        // left rear
+        wheelSpeeds[2] = -x + y + rot
+        // right rear
+        wheelSpeeds[3] = x + y - rot
+
+        MathUtils.normalize(wheelSpeeds)
     }
 
     enum class DriveMode {
