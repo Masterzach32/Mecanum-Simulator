@@ -3,7 +3,7 @@
 .project
 .settings/
 
-# Intellij
+# IntelliJ
 .idea/
 out/
 *.iml
@@ -19,3 +19,5 @@ target/
 # Gradle
 .gradle/
 build/
+
+# Add other files here:
