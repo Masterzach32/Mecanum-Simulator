@@ -123,7 +123,7 @@ class ConfigPanel : JPanel() {
             }
         }
         val simPanel = WINDOW!!.simPanel
-        wheelSpeeds.indices.forEach { simPanel.arrows[it].magnitude = wheelSpeeds[it] }
+        wheelSpeeds.indices.forEach { simPanel.wheelVectors[it].magnitude = wheelSpeeds[it] }
         simPanel.repaint()
     }
 

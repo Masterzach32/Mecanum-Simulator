@@ -2,6 +2,9 @@ package net.masterzach32.simulator.graphics
 
 import java.awt.Color
 import java.awt.Graphics2D
+import java.awt.geom.Path2D
+import java.awt.geom.AffineTransform
+import java.awt.Rectangle
 
 /**
  * @param text Text to be displayed next to the arrow
@@ -17,14 +20,15 @@ class Vector(var text: String, val x: Int, val y: Int, var magnitude: Double, va
         if (magnitude == 0.0)
             return
         val temp = g.color
-        g.rotate(rads)
         g.color = color
-        val length = (magnitude*40).toInt()
-        if (magnitude < 0)
-            g.fillRect(x - thickness/2, y, thickness, -length)
-        else
-            g.fillRect(x - thickness/2, y - length, thickness, length)
-        g.rotate(-rads)
+        val r = Rectangle(x, y, thickness, (magnitude*40).toInt())
+        val path = Path2D.Double()
+        path.append(r, false)
+        val t = AffineTransform()
+        t.rotate(Math.toRadians(angle))
+        path.transform(t)
+        g.draw(path)
+        g.fill(path)
         g.color = temp
     }
 }

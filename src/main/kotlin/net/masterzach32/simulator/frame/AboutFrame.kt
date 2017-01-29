@@ -34,7 +34,10 @@ class AboutFrame(frame: JFrame) : JDialog(frame) {
         website.background = Color.WHITE
         website.toolTipText = link.toString()
         website.cursor = Cursor(Cursor.HAND_CURSOR)
-        website.addActionListener { Desktop.getDesktop().browse(link) }
+        website.addActionListener {
+            Desktop.getDesktop().browse(link)
+            isVisible = false
+        }
         titlePanel.add(website)
 
         panel.add(titlePanel)

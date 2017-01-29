@@ -9,7 +9,8 @@ import javax.swing.JSlider
 
 class SimPanel : JPanel() {
 
-    val arrows = ArrayList<Vector>()
+    val wheelVectors: List<Vector> = ArrayList()
+    val forceVector: Vector
 
     val slider = JSlider()
 
@@ -38,12 +39,14 @@ class SimPanel : JPanel() {
         slider.snapToTicks = true
         slider.isEnabled = false
         slider.addChangeListener {
-            arrows.forEach {  }
+            wheelVectors.forEach {  }
         }
-        arrows.add(Vector("Left Front", startX + wheelWidth/2, startY + wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
-        arrows.add(Vector("Right Front", startX + botWidth - wheelWidth/2, startY + wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
-        arrows.add(Vector("Left Rear", startX + wheelWidth/2, startY + botHeight - wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
-        arrows.add(Vector("Right Rear", startX + botWidth - wheelWidth/2, startY + botHeight - wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
+        wheelVectors as MutableList<Vector>
+        wheelVectors.add(Vector("Left Front", startX + wheelWidth/2, startY + wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
+        wheelVectors.add(Vector("Right Front", startX + botWidth - wheelWidth/2, startY + wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
+        wheelVectors.add(Vector("Left Rear", startX + wheelWidth/2, startY + botHeight - wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
+        wheelVectors.add(Vector("Right Rear", startX + botWidth - wheelWidth/2, startY + botHeight - wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
+        forceVector = Vector("Force Vector", startX + botWidth/2, startY + botHeight/2, 1.0, 20.0, 10, Color.BLUE)
     }
 
     override fun getPreferredSize() = Dimension(300, 400)
@@ -81,7 +84,8 @@ class SimPanel : JPanel() {
         // top right
         g.fillRect(startX + botWidth - topLength + overlap, startY - metalWidth, topLength, metalWidth)
 
-        arrows.forEach { it.render(g as Graphics2D) }
+        wheelVectors.forEach { it.render(g as Graphics2D) }
+        forceVector.render(g as Graphics2D)
     }
 
     fun enableCSVMode(speeds: List<Double>, ms: Int) {
