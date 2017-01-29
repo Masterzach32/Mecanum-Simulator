@@ -1,7 +1,6 @@
 package net.masterzach32.simulator.frame
 
 import net.masterzach32.simulator.graphics.Vector
-import org.apache.commons.csv.CSVRecord
 import java.awt.*
 import java.util.*
 import javax.swing.JPanel
