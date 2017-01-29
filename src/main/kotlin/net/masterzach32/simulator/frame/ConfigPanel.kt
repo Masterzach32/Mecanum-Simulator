@@ -2,6 +2,7 @@ package net.masterzach32.simulator.frame
 
 import net.masterzach32.simulator.graphics.MathUtils
 import net.masterzach32.simulator.WINDOW
+
 import java.awt.Dimension
 import java.awt.FlowLayout
 import java.awt.GridLayout
@@ -15,10 +16,8 @@ class ConfigPanel : JPanel() {
     val sliders = ArrayList<JSlider>()
 
     val driveGroup = ButtonGroup()
-    val modeGroup = ButtonGroup()
 
     var driveMode = DriveMode.CARTESIAN
-    var mode = Mode.ABSOLUTE
 
     init {
         layout = GridLayout(6, 2, 10, 0)
@@ -66,11 +65,6 @@ class ConfigPanel : JPanel() {
         val direct: JRadioButton = JRadioButton("Direct Drive")
         direct.addActionListener { updateDriveMode(DriveMode.DIRECT) }
 
-        val absolute = JRadioButton("Absolute Drive")
-        absolute.addActionListener { updateMode(Mode.ABSOLUTE) }
-        val relative = JRadioButton("Relative Drive")
-        relative.addActionListener { updateMode(Mode.RELATIVE) }
-
         val drivePanel = JPanel()
         drivePanel.layout = FlowLayout(FlowLayout.LEFT, 0, 0)
         cartesian.isSelected = true
@@ -84,11 +78,6 @@ class ConfigPanel : JPanel() {
 
         val modePanel = JPanel()
         modePanel.layout = FlowLayout(FlowLayout.LEFT, 0, 0)
-        absolute.isSelected = true
-        modeGroup.add(absolute)
-        modeGroup.add(relative)
-        modePanel.add(absolute)
-        modePanel.add(relative)
         val reset = JButton("Reset")
         reset.addActionListener {
             sliders.forEach { it.value = 0 }
@@ -99,13 +88,19 @@ class ConfigPanel : JPanel() {
 
     override fun getPreferredSize() = Dimension(300, 400)
 
-    private fun updateDriveMode(driveMode: DriveMode) {
-        this.driveMode = driveMode
-        updateSpeedVectors()
+    fun enableCSVMode() {
+        sliders.forEach {
+            it.value = 0
+            it.isEnabled = false
+        }
     }
 
-    private fun updateMode(mode: Mode) {
-        this.mode = mode
+    fun disableCSVMode() {
+        sliders.forEach { it.isEnabled = true }
+    }
+
+    private fun updateDriveMode(driveMode: DriveMode) {
+        this.driveMode = driveMode
         updateSpeedVectors()
     }
 
@@ -158,10 +153,5 @@ class ConfigPanel : JPanel() {
         CARTESIAN,
         POLAR,
         DIRECT
-    }
-
-    enum class Mode {
-        ABSOLUTE,
-        RELATIVE
     }
 }

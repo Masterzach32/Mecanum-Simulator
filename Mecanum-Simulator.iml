@@ -107,5 +107,7 @@
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.7" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.20" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe:config:1.3.1" level="project" />
+    <orderEntry type="library" name="commons-csv-1.4" level="project" />
+    <orderEntry type="library" name="opencsv-3.8" level="project" />
   </component>
 </module>
