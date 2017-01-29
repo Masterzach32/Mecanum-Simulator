@@ -17,9 +17,10 @@ class Window : JFrame("Mecanum Simulator") {
     val helpMenu = JMenu("Help")
     val importPath = JMenuItem("Import Path (.csv)")
     val exportGif = JMenuItem("Export GIF")
+    val exitMenu = JMenuItem("Exit")
 
     val about = JMenuItem("About")
-    val aboutFrame = AboutFrame()
+    val aboutFrame = AboutFrame(this)
     val checkForUpdates = JMenuItem("Check for Updates")
 
     init {
@@ -33,12 +34,20 @@ class Window : JFrame("Mecanum Simulator") {
             val reader = CSVReader(FileReader(chooser.selectedFile))
             simPanel.enableCSVMode(parseSpeedFromCSV(reader), parseMSFromCSV(reader))
             configPanel.enableCSVMode()
+            exportGif.isEnabled = true
         }
         fileMenu.add(exportGif)
+        exportGif.isEnabled = false
+        fileMenu.addSeparator()
+        fileMenu.add(exitMenu)
+        exitMenu.addActionListener { System.exit(0) }
         menuBar.add(fileMenu)
         helpMenu.add(checkForUpdates)
         helpMenu.addSeparator()
-        about.addActionListener { aboutFrame.isVisible = true }
+        about.addActionListener {
+            aboutFrame.isVisible = true
+            aboutFrame.repaint()
+        }
         helpMenu.add(about)
         menuBar.add(helpMenu)
         add(menuBar, BorderLayout.NORTH)

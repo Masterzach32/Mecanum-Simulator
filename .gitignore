@@ -20,4 +20,7 @@ target/
 .gradle/
 build/
 
+# Gource
+grav.perl
+
 # Add other files here:

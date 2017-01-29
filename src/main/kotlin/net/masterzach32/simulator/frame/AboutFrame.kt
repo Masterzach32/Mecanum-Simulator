@@ -6,7 +6,7 @@ import java.net.URI
 import javax.swing.*
 import java.awt.Desktop
 
-class AboutFrame : JFrame("About") {
+class AboutFrame(frame: JFrame) : JDialog(frame) {
 
     val title = JLabel("Mecanum Simulator")
     val team = JLabel("${CONFIG.getString("frc-team.name")} (${CONFIG.getString("frc-team.num")})")
@@ -16,6 +16,7 @@ class AboutFrame : JFrame("About") {
     init {
         layout = FlowLayout()
         defaultCloseOperation = WindowConstants.HIDE_ON_CLOSE
+        isModal = true
         val panel = JPanel()
         panel.layout = GridLayout(1, 2)
         panel.add(JLabel(ImageIcon(javaClass.classLoader.getResource("logo.png"))))
