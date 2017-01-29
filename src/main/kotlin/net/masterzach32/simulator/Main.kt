@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory
 import javax.swing.UIManager
 
 val LOGGER = LoggerFactory.getLogger(Window::class.java)!!
-val CONFIG = ConfigFactory.load()
+val CONFIG = ConfigFactory.load()!!
 var WINDOW: Window? = null
 
 fun main(args: Array<String>) {

@@ -1,6 +1,7 @@
 package net.masterzach32.simulator.frame
 
 import net.masterzach32.simulator.graphics.Vector
+import net.masterzach32.simulator.playback.MotionProfilePlayback
 import java.awt.*
 import java.util.*
 import javax.swing.JPanel
@@ -12,8 +13,7 @@ class SimPanel : JPanel() {
 
     val slider = JSlider()
 
-    private var csvPath: List<Double>? = null
-    private var max = 0
+    private var csvPath: MotionProfilePlayback? = null
 
     val startX = 50
     val startY = 50
@@ -38,7 +38,7 @@ class SimPanel : JPanel() {
         slider.snapToTicks = true
         slider.isEnabled = false
         slider.addChangeListener {
-            arrows.forEach { it.magnitude = (csvPath as List<Double>)[slider.value]}
+            arrows.forEach {  }
         }
         arrows.add(Vector("Left Front", startX + wheelWidth/2, startY + wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
         arrows.add(Vector("Right Front", startX + botWidth - wheelWidth/2, startY + wheelHeight/2, 0.0, 0.0, 5, Color.GREEN))
@@ -86,8 +86,8 @@ class SimPanel : JPanel() {
 
     fun enableCSVMode(speeds: List<Double>, ms: Int) {
         slider.isEnabled = true
-        slider.maximum = speeds.size
-        csvPath = speeds
+        slider.maximum = speeds.size-1
+        csvPath = MotionProfilePlayback(ArrayList<Double>(), speeds, ms)
     }
 
     fun disableCSVMode() {

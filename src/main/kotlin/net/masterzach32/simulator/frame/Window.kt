@@ -32,7 +32,7 @@ class Window : JFrame("Mecanum Simulator") {
             if (chooser.selectedFile == null)
                 return@addActionListener
             val reader = CSVReader(FileReader(chooser.selectedFile))
-            simPanel.enableCSVMode(parseSpeedFromCSV(reader), parseMSFromCSV(reader))
+            simPanel.enableCSVMode(parseSpeedFromCSV(reader), getMs())
             configPanel.enableCSVMode()
             exportGif.isEnabled = true
         }
@@ -72,7 +72,16 @@ class Window : JFrame("Mecanum Simulator") {
         return list
     }
 
-    fun parseMSFromCSV(reader: CSVReader): Int {
-        return 20 //reader.readNext()[2].toInt() TODO fix
+    fun getMs(): Int {
+        var ms: Int
+        val dialog = JOptionPane.showInputDialog(this, "Enter MS between motor updates", "20")
+        try {
+            ms = dialog.toInt()
+            if (ms < 0)
+                ms = 20
+        } catch (e: NumberFormatException) {
+            ms = 20
+        }
+        return ms
     }
 }
